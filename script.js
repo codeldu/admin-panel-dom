@@ -1281,6 +1281,19 @@ let body = document.querySelector('#body');
 let sorter = document.querySelector('#sorter');
 let addBtn = document.querySelector('#add');
 
+let searchInp = document.querySelector('#searchBox');
+let searchBtn = document.querySelector('#searchBtn');
+
+// searchBtn.addEventListener('click', ()=>{
+//  let filtered = customers.filter((customer)=> customer.companyName.startsWith(searchInp.value));
+//  createCustomer(filtered)
+// })
+
+searchInp.addEventListener('input', (e)=>{
+   let filtered = customers.filter((customer)=> customer.companyName.toLowerCase().startsWith(e.target.value.toLowerCase()));
+ createCustomer(filtered)
+})
+
 function createCustomer(arr){
     console.log(arr);
     body.innerHTML = arr.map((customerInfo)=> {
